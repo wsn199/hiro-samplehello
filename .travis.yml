@@ -20,6 +20,7 @@ addons:
     channel: stable
 
 script:
+- check_archtecture.sh
 - uname -m
 - which lxd 
 - ls 
@@ -32,7 +33,11 @@ script:
 - echo " ----Deploy-----"
 - snapcraft login --with iotdevice-test-masahiro.login
 - snapcraft whoami
-- snapcraft push iotdevice-test-masahiro_0.1_arm64.snap
+- echo "SNAP ARCH is $SNAP_ARCH"
+- echo "SNAP REVISION is $SNAP_REVISION"
+- echo "SNAP NAME is $SNAP_NAME"
+- snapcraft push $(iotdevice-test-masahiro_0.1_$(cat arch).snap)
+
 after_failure:
 - sudo journalctl -u snapd
 after_success:
