@@ -21,10 +21,7 @@ addons:
 
 script:
 - bash check_architecture.sh
-- which lxd 
-- ls 
 - sudo usermod --append --groups lxd $USER
-- groups
 - sudo /snap/bin/lxd waitready
 - sudo /snap/bin/lxd init --auto
 - sudo lxc list
@@ -32,10 +29,9 @@ script:
 - echo " ----Deploy-----"
 - snapcraft login --with iotdevice-test-masahiro.login
 - snapcraft whoami
-- echo "SNAP ARCH is $SNAP_ARCH"
-- echo "SNAP REVISION is $SNAP_REVISION"
-- echo "SNAP NAME is $SNAP_NAME"
-- snapcraft push $(iotdevice-test-masahiro_0.1_$(cat arch).snap)
+- SNAP_NAME=$(iotdevice-test-masahiro0.1_$(cat arch).snap
+- echo "snap name is $SNAP_NAME"
+- snapcraft push $SNAP_NAME
 
 after_failure:
 - sudo journalctl -u snapd
