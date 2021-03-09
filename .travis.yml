@@ -2,7 +2,7 @@ language: shell
 dist: focal
 os: linux
 virt: vm
-group: edge
+#group: edge
 arch:
 - arm64-graviton2
 
