@@ -29,7 +29,7 @@ script:
 - echo " ----Deploy-----"
 - snapcraft login --with iotdevice-test-masahiro.login
 - snapcraft whoami
-- SNAP_NAME=$(iotdevice-test-masahiro0.1_$(cat arch).snap)
+- SNAP_NAME=$(iotdevice-test-masahiro_0.1_$(cat arch).snap)
 - echo "snap name is $SNAP_NAME"
 - snapcraft push $SNAP_NAME
 
