@@ -1,0 +1,38 @@
+language: shell
+dist: focal
+os: linux
+virt: vm
+group: edge
+arch:
+- arm64-graviton2
+
+env:
+  global:
+before_install:
+-  openssl aes-256-cbc -K $encrypted_ddb265ce0382_key -iv $encrypted_ddb265ce0382_iv -in iotdevice-test-masahiro.login.enc -out iotdevice-test-masahiro.login -d
+addons:
+  snaps:
+  - name: snapcraft
+    channel: stable
+    confinement: classic
+  - name: lxd
+    channel: stable
+
+script:
+- uname -m
+- which lxd 
+- ls 
+- sudo usermod --append --groups lxd $USER
+- groups
+- sudo /snap/bin/lxd waitready
+- sudo /snap/bin/lxd init --auto
+- sudo lxc list
+- sg lxd -c "snapcraft --use-lxd"
+- echo " ----Deploy-----"
+- snapcraft login --with iotdevice-test-masahiro.login
+- snapcraft whoami
+- snapcraft push iotdevice-test-masahiro_0.1=arm64.snap
+after_failure:
+- sudo journalctl -u snapd
+after_success:
+ 
