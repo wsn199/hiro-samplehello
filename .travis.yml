@@ -5,6 +5,7 @@ virt: vm
 group: edge
 arch:
 - arm64-graviton2
+- amd64
 
 env:
   global:
