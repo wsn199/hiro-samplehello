@@ -9,7 +9,7 @@ arch:
 env:
   global:
 before_install:
--  openssl aes-256-cbc -K $encrypted_ddb265ce0382_key -iv $encrypted_ddb265ce0382_iv -in iotdevice-test-masahiro.login.enc -out iotdevice-test-masahiro.login -d
+- openssl aes-256-cbc -K $encrypted_ddb265ce0382_key -iv $encrypted_ddb265ce0382_iv -in iotdevice-test-masahiro.login.enc -out iotdevice-test-masahiro.login -d
 addons:
   snaps:
   - name: snapcraft
