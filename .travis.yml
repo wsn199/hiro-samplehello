@@ -20,7 +20,7 @@ addons:
     channel: stable
 
 script:
-- check_archtecture.sh
+- check_architecture.sh
 - uname -m
 - which lxd 
 - ls 
