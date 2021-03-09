@@ -20,8 +20,7 @@ addons:
     channel: stable
 
 script:
-- check_architecture.sh
-- uname -m
+- bash check_architecture.sh
 - which lxd 
 - ls 
 - sudo usermod --append --groups lxd $USER
