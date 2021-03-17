@@ -10,8 +10,10 @@ fi
 
 if [ $architecture = "aarch64" ]; then
   echo "arm64" > arch
-else if [ $architecture = "arm64" ]; then
+elif [ $architecture = "arm64" ]; then
   echo "arm64" > arch
 else 
   echo "amd64" > arch
 fi
+
+
