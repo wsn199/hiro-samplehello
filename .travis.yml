@@ -16,9 +16,8 @@ addons:
     - name: snapcraft
       channel: stable
       confinement: classic
-
 script:
-  - snapcraft push *.snap
+  - snapcraft --destructive-mode
 
 after_failure:
   - sudo journalctl -u snapd
